@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div id="page">
+  <h1 id="page-title">{{ with .Title }}{{ . }}{{ else }}取締役決定書{{ end }}</h1>
+
+  <p>{{ .Date.Year }}年{{ .Date.Month | int }}月{{ .Date.Day }}日{{ with .Params.start }}{{ .hour }}時{{ .minute }}分より{{ end }}、{{ .Params.location }}において会議を開催し、当社取締役は全員一致をもって次のとおり決定した。</p>
+<p class="spacer"></p>
+
+  {{ .Content }}
+
+<p class="spacer"></p>
+<p>　上記決定を明確にするため、本書を作成する。</p>
+<p class="spacer"></p>
+
+<div id="footer">
+	<p>{{ .Date.Year }}年{{ .Date.Month | int }}月{{ .Date.Day }}日</p>
+  <p>{{ .Params.company }}</p>
+  {{ range .Params.repdirectors }}
+    <pre class="signature">
+    代表取締役　{{ . }}
+    </pre>
+  {{ end }}
+  {{ range .Params.directors }}
+    <pre class="signature">
+    取締役　{{ . }}
+    </pre>
+  {{ end }}
+</div>
+</div>
+{{ end }}

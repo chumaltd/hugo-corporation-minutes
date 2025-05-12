@@ -1,0 +1,16 @@
+name = 'Corporation Minutes'
+license = 'MIT'
+licenselink = 'https://github.com/chumaltd/repo/LICENSE'
+description = 'Theme description'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/chumaltd/repo'
+
+# Taxonomy terms
+tags = ['company']
+features = ['leagal']
+
+[author]
+  name = 'Chuma Takahiro'
+  homepage = 'https://chumaltd.github.io/'
+

@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div id="page">
+  <h1>{{ .Title }}</h1>
+
+  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+  {{ $dateHuman := .Date | time.Format ":date_long" }}
+  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+
+  {{ .Content }}
+
+<div id="footer">
+  <p>$year$年$month$月$day$日</p>
+  <p>{{ .Params.company }}</p>
+  {{ range .Params.repdirectors }}
+    <pre class="signature">
+    代表取締役　{{ . }}
+    </pre>
+  {{ end }}
+  {{ range .Params.directors }}
+    <pre class="signature">
+    取締役　{{ . }}
+    </pre>
+  {{ end }}
+</div>
+</div>
+{{ end }}
