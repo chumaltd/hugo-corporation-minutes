@@ -26,4 +26,10 @@
   {{ end }}
 </div>
 </div>
+
+<p class="spacer"></p>
+{{ range $k, $v := .Resources.Match "*.pdf" }}
+<div><a href="{{ $v.RelPermalink }}">添付資料{{ math.Add $k 1 }}</a></div>
+{{ end }}
+
 {{ end }}
