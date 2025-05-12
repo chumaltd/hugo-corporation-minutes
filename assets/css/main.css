@@ -13,7 +13,7 @@ body, pre {
   font-size: 10.5pt;
   font-family:YuMin-Medium,YuMincho,"游明朝","Hiragino Mincho ProN W3","ヒラギノ明朝 ProN W3","ＭＳ 明朝"; 
 }
-div#page {
+div#page, div#attachment {
   max-width: 46em;
   margin: auto;
   padding: 3em;
