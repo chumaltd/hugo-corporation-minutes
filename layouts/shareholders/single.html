@@ -2,25 +2,36 @@
 <div id="page">
   <h1 id="page-title">{{ with .Title }}{{ . }}{{ else }}株主総会議事録{{ end }}</h1>
 
+<p>{{ .Date.Year }}年{{ .Date.Month | int }}月{{ .Date.Day }}日
+    {{- with .Params.start }}{{ .hour }}時{{- with .minute }}{{ . }}分{{ end}}から{{ end }}、
+    {{- with .Params.location }}{{ . }}において、{{ end }}
+    株主総会を開催した。</p>
+<p class="spacer"></p>
+
 <div id="spec">
-  <p><span class="title">発行済株式総数</span>
-  <span>{{ .Params.share.total }}株</span>
-  </p>
-  <p><span class="title">議決権を有する株主の総数</span>
-  <span>{{ .Params.share.memberstotal }}名</span>
-  </p>
-  <p><span class="title">議決権総数</span>
-  <span>{{ .Params.share.rightstotal }}個</span>
-  </p>
-  <p><span class="title">出席株主の数（委任状出席を含む）</span>
-  <span>{{ .Params.share.members }}名</span>
-  </p>
-  <p><span class="title">出席株主の議決権数</span>
-  <span>{{ .Params.share.rights }}個</span>
-  </p>
-  <p><span class="title">出席役員</span></p>
-  {{ range .Params.repdirectors }}
-  <p><span class="title right">代表取締役　</span><span>{{ . }}</span></p>
+    <p><span class="title">発行済株式総数</span>
+        <span>{{ .Params.share.total }}株</span>
+    </p>
+    {{- with .Params.share.treasury }}
+    <p><span class="title"></span>
+        <span>（うち、自己株式{{ . }}株）</span>
+    </p>
+    {{- end }}
+    <p><span class="title">議決権を有する株主の総数</span>
+        <span>{{ .Params.share.memberstotal }}名</span>
+    </p>
+    <p><span class="title">議決権総数</span>
+        <span>{{ .Params.share.rightstotal }}個</span>
+    </p>
+    <p><span class="title">出席株主の数（委任状出席を含む）</span>
+        <span>{{ .Params.share.members }}名</span>
+    </p>
+    <p><span class="title">出席株主の議決権数</span>
+        <span>{{ .Params.share.rights }}個</span>
+    </p>
+    <p><span class="title">出席役員</span></p>
+    {{ range .Params.repdirectors }}
+    <p><span class="title right">代表取締役　</span><span>{{ . }}</span></p>
   {{ end }}
   {{ range .Params.directors }}
   <p><span class="title right">取締役　</span><span>{{ . }}</span></p>
@@ -30,13 +41,14 @@
 
   <p class="spacer"></p>
   <p>上記のとおり出席があったので、本総会は適法に成立した。<br>
-  定刻、代表取締役{{ .Params.chairman }}は定款の規定により議長となり開会を宣し直ちに議事に入った。</p>
+  定刻、{{ .Params.chairman }}は定款の規定により議長となり開会を宣した。</p>
   <p class="spacer"></p>
 
   {{ .Content }}
 
 <p class="spacer"></p>
-<p> 　以上をもって本総会の議案全部を終了したので、議長は閉会の挨拶を述べ、{{ with .Params.end.hour }}{{ . }}{{ else }}10{{ end }}時{{ with .Params.end.minute }}{{ . }}{{ else }}30{{ end }}分散会した。上記の決議を明確にするため、この議事録を作成する。</p>
+<p> 　以上をもって本総会の議案全部を終了したので、議長は閉会の挨拶を述べ、{{ with .Params.end }}{{ .hour }}時{{ with .minute }}{{ . }}分{{ end }}{{ end }}散会した。
+    上記議事の経過およびその結果を明確にするため、この議事録を作成する。</p>
 <p class="spacer"></p>
 
 <div id="footer">
